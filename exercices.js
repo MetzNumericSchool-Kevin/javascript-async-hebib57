@@ -3,6 +3,8 @@
  */
 
 // Définition
+const voyage = document.querySelector(".voyage_en_cours");
+const epoque = document.querySelector(".localisation_epoque");
 const boutonVoyageHTML = document.querySelector(".btn-voyage");
 const localisationEpoqueHTML = document.querySelector(".localisation_epoque");
 const listeArtefactHTML = document.querySelector(".liste_artefacts");
@@ -70,10 +72,26 @@ creerLesChoixEpoque(epoques);
 // et qu'une époque de destination du voyage temporel a été choisi
 function quandEpoqueChoisie(nomEpoque) {
   nomEpoqueActuelle = nomEpoque;
-  // Utilisation de votre fonction voyagerTemps
+  console.log(nomEpoqueActuelle);
+  epoque.style.display = "none";
+  voyage.style.display = "block";
+  voyagerTemps(nomEpoqueActuelle, function () {
+    voyage.style.display = "none";
+    epoque.style.display = "block";
+    epoque.textContent = nomEpoqueActuelle;
+  });
+
+  // Utilisation de votre0 fonction voyagerTemps
 }
 
 // Fonction appelée plus haut quand le formulaire de recherche d'artefact est soumis
 function quandRechercheArtefact(artefact) {
   // Utilisation de votre fonction collecterArtefact
+  console.log(quandRechercheArtefact);
+}
+
+function voyagerTemps(destination, callback) {
+  setTimeout(() => {
+    callback(destination);
+  }, generationNombreAleatoireEntre(1000, 3000));
 }
