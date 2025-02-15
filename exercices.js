@@ -87,11 +87,25 @@ function quandEpoqueChoisie(nomEpoque) {
 // Fonction appelée plus haut quand le formulaire de recherche d'artefact est soumis
 function quandRechercheArtefact(artefact) {
   // Utilisation de votre fonction collecterArtefact
-  console.log(quandRechercheArtefact);
+  collecterArtefact(artefact, function (collecteReussie) {
+    afficherRechercheArtefact({
+      artefact: artefact,
+      epoque: nomEpoqueActuelle,
+      success: collecteReussie,
+    });
+  });
 }
 
 function voyagerTemps(destination, callback) {
   setTimeout(() => {
     callback(destination);
+  }, generationNombreAleatoireEntre(1000, 3000));
+}
+
+function collecterArtefact(nomArtefact, callback) {
+  setTimeout(function () {
+    console.log(nomArtefact);
+    const collecteReussie = Math.random() * 100 < 50;
+    callback(collecteReussie);
   }, generationNombreAleatoireEntre(1000, 3000));
 }
