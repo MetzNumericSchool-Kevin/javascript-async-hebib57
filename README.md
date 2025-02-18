@@ -70,21 +70,7 @@ voyagerTemps(nomEpoque, function () {});
   - Prendre deux paramètres : le nom de l'artefact et un callback.
   - Même chose que l'exercice précedent, utilisation d'un setTimeout pour simuler une collecte asynchrone.
   - La collecte a 50% de chance de succès :
-    - `Math.random() * 100` pour simuler un résultat entre 0 et 100.
-    - Si la collecte réussit, appeler le callback avec le premier argument à `true`.
-    - Si la collecte échoue, appeler le callback avec le premier argument à `false`.
-
-Exemple d'utilisation :
-
-```js
-collecterArtefact(nomEpoque, function (collecte_reussie) {});
-```
-
-**Résultat attendu :**
-
-- Quand une collecte d'artefact est effectuée depuis le formulaire, on doit pouvoir voir dans la liste HTML :
-  - Artefact qui a bien été collecté.
-  - Ou artefact qui a échoué a être collecté.
+    - `Math.random() * 100` pour simuler un résultat entre 0 et 10
 
 ### La Mission Temporelle Complexe
 

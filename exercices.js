@@ -97,15 +97,40 @@ function quandRechercheArtefact(artefact) {
 }
 
 function voyagerTemps(destination, callback) {
+  console.log("Voyage temporel vers :", destination);
   setTimeout(() => {
+    console.log("Voyage terminé vers :", destination);
     callback(destination);
   }, generationNombreAleatoireEntre(1000, 3000));
 }
 
 function collecterArtefact(nomArtefact, callback) {
+  console.log("Collecte d'artefact en cours... ", nomArtefact);
   setTimeout(function () {
-    console.log(nomArtefact);
     const collecteReussie = Math.random() * 100 < 50;
-    callback(collecteReussie);
+    console.log(
+      "Collecte d'artefact terminée :",
+      nomArtefact,
+      "Collecte réussie :",
+      collecteReussie
+    );
+    callback(collecteReussie, nomArtefact);
   }, generationNombreAleatoireEntre(1000, 3000));
 }
+
+function missionTemporelleComplexe() {
+  console.log("Mission temporelle complexe en cours...");
+  voyagerTemps("médiévale", () => {
+    collecterArtefact("épée de chevalier", () => {
+      voyagerTemps("romaine", () => {
+        collecterArtefact("bouclier", () => {
+          collecterArtefact("épée romaine", () => {
+            console.log("Mission temporelle complexe accomplie");
+          });
+        });
+      });
+    });
+  });
+}
+
+missionTemporelleComplexe();
